@@ -12,7 +12,11 @@ reverse("id"); // "di"
 reverse(""); // ""
 ***********************************************************************/
 
-// your code here
+let reverse = (string) => {
+  if (string === '') return '';
+  let lastLetter = string[string.length - 1];
+  if (string.length > 0) return lastLetter + reverse(string.slice(0, string.length - 1));
+}
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {

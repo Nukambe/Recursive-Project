@@ -11,8 +11,29 @@ permutations([1, 2, 3]) // [[1, 2, 3], [1, 3, 2],
                         // [2, 1, 3], [2, 3, 1],
                         // [3, 1, 2], [3, 2, 1]]
 ***********************************************************************/
+// Chat GPT...
+function permutations(array) {
+  if (array.length === 0) {
+    return [[]]; // Base case: return an array with an empty permutation
+  }
 
-// your code here
+  const result = [];
+
+  for (let i = 0; i < array.length; i++) {
+    const currentElement = array[i];
+    const remainingElements = array.slice(0, i).concat(array.slice(i + 1));
+
+    const permutationsOfRemaining = permutations(remainingElements);
+
+    for (let j = 0; j < permutationsOfRemaining.length; j++) {
+      const permutation = [currentElement].concat(permutationsOfRemaining[j]);
+      result.push(permutation);
+    }
+  }
+
+  return result;
+}
+
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {

@@ -58,8 +58,29 @@ function greedyMakeChange(target, coins = [25, 10, 5, 1]) {
   // your code here
 }
 
-function makeBetterChange(target, coins = [25, 10, 5, 1]) {
-  // your code here
+function makeBetterChange(amount, coins = [25, 10, 5, 1]) {
+  if (amount === 0) {
+    return []; // Base case: target amount reached, return an empty array
+  }
+
+  let bestChange = null;
+
+  for (let i = 0; i < coins.length; i++) {
+    const coin = coins[i];
+    if (coin > amount) continue; // Skip if the coin value is greater than the remaining amount
+
+    const remainingAmount = amount - coin;
+    const remainingChange = makeBetterChange(remainingAmount, coins.slice(i));
+
+    if (remainingChange !== null) {
+      const change = [coin].concat(remainingChange);
+      if (bestChange === null || change.length < bestChange.length) {
+        bestChange = change;
+      }
+    }
+  }
+
+  return bestChange;
 }
 
 

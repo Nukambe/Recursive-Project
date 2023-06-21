@@ -13,7 +13,11 @@ iceCreamShop([], 'honey lavender'); // false
 ***********************************************************************/
 
 
-// your code here
+let iceCreamShop = (flavors, favorite, i = 0) => {
+  if (flavors[i] === favorite) return true;
+  if (flavors[i] === undefined) return false;
+  return iceCreamShop(flavors, favorite, i + 1);
+}
 
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/

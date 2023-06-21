@@ -10,8 +10,11 @@ sumArray([0, 1, -3]); //  -2
 sumArray([1, 2, 3, 4, 5]); // 15
 ***********************************************************************/
 
-// your code here
-  
+let sumArray = (array, i = 0) => {
+  if (array[i] === undefined) return 0;
+  return array[i] + sumArray(array, i + 1);
+}
+
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {
   module.exports = sumArray;
